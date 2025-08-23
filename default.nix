@@ -13,8 +13,8 @@ appimageTools.wrapType2 {
   inherit pname version src;
   pkgs = pkgs;
   extraInstallCommands = ''
-  install -m 444 -D ${appimageContents}/${pname}texts.desktop -t $out/share/applications
-  substituteInPlace $out/share/applications/${pname}texts.desktop \
+  install -m 444 -D ${appimageContents}/beepertexts.desktop -t $out/share/applications
+  substituteInPlace $out/share/applications/beepertexts.desktop \
   --replace 'Exec=AppRun' 'Exec=${pname}'
   cp -r ${appimageContents}/usr/share/icons $out/share
 
