@@ -1,4 +1,4 @@
-{ pkgs, appimageTools, makeDesktopItem, ... }:
+{ pkgs, appimageTools, ... }:
 let
 pname = "beeper";
 version = "4.1.135";
@@ -13,13 +13,16 @@ appimageTools.wrapType2 {
   inherit pname version src;
   pkgs = pkgs;
   extraInstallCommands = ''
-          cp -r ${appimageContents}/usr/share/icons $out/share
+  install -m 444 -D ${appimageContents}/${pname}texts.desktop -t $out/share/applications
+  substituteInPlace $out/share/applications/${pname}texts.desktop \
+  --replace 'Exec=AppRun' 'Exec=${pname}'
+  cp -r ${appimageContents}/usr/share/icons $out/share
 
-          # unless linked, the binary is placed in $out/bin/cursor-someVersion
-          # ln -s $out/bin/${pname}-${version} $out/bin/${pname}
+  # unless linked, the binary is placed in $out/bin/cursor-someVersion
+  # ln -s $out/bin/${pname}-${version} $out/bin/${pname}
         '';
   desktopItems = [
-    (makeDesktopItem {
+    (pkgs.makeDesktopItem {
       name = "beeper";
       exec = "beeper %U";
       icon = "beeper";
