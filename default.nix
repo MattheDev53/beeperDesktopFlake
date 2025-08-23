@@ -21,14 +21,4 @@ appimageTools.wrapType2 {
   # unless linked, the binary is placed in $out/bin/cursor-someVersion
   # ln -s $out/bin/${pname}-${version} $out/bin/${pname}
         '';
-  desktopItems = [
-    (pkgs.makeDesktopItem {
-      name = "beeper";
-      exec = "beeper %U";
-      icon = "beeper";
-      desktopName = "Beeper";
-      comment = "Beeper Beeper Desktop";
-      categories = [ "Internet" ];
-    })
-  ];
 }
