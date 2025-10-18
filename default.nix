@@ -4,7 +4,7 @@ pname = "beeper";
 version = "4.1.135";
 src = pkgs.fetchurl {
   url = "https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop";
-  hash = "sha256-bp0RGU689A8kgphNgJJnlbQBh1fAubwWUvM9StzLwB4=";
+  hash = "sha256-35fPd3bwbUwhdEtMrq/P+vPeh9Kdv9vwCP6LC7p4N9I=";
 };
 
 appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
