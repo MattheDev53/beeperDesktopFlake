@@ -4,7 +4,7 @@ pname = "beeper";
 version = "4.2.630";
 src = pkgs.fetchurl {
   url = "https://beeper-desktop.download.beeper.com/builds/Beeper-${version}-x86_64.AppImage";
-  hash = "";
+  hash = "sha256-1oaJoQ9Ws9Bc+CQFojYCJc5ChgkHUVOKtWrT3ehGMNU=";
 };
 
 appimageContents = pkgs.appimageTools.extract { inherit pname version src; };

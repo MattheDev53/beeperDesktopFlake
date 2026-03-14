@@ -17,7 +17,6 @@
       default = self.packages.${system}.beeper.stable;
       beeper = {
         stable = pkgs.callPackage ./default.nix {};
-        nightly = pkgs.callPackage ./beta.nix {};
       };
     });
   };
