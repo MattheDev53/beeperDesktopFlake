@@ -1,10 +1,10 @@
 { pkgs, appimageTools, copyDesktopItems, makeDesktopItem, ... }:
 let
 pname = "beeper";
-version = "4.2.547";
+version = "4.2.630";
 src = pkgs.fetchurl {
-  url = "https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop";
-  hash = "sha256-wcefnGwR8Yz13CE3wbMU6J4hglA2lfpaGE5pklqib6w=";
+  url = "https://beeper-desktop.download.beeper.com/builds/Beeper-${version}-x86_64.AppImage";
+  hash = "sha256-1oaJoQ9Ws9Bc+CQFojYCJc5ChgkHUVOKtWrT3ehGMNU=";
 };
 
 appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
@@ -34,7 +34,7 @@ appimageTools.wrapType2 rec {
   cp ${desktopItem}/share/applications/*.desktop $out/share/applications/
   cp -r ${appimageContents}/usr/share/icons $out/share
 
-  # unless linked, the binary is placed in $out/bin/cursor-someVersion
+  # unless linked, the binary is placed in $out/bin/beeper-someVersion
   # ln -s $out/bin/${pname}-${version} $out/bin/${pname}
         '';
 }
