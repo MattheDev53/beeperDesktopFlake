@@ -1,0 +1,18 @@
+name: Auto Update Hash
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: hustcer/setup-nu@v3
+    - run: nu ./update.nu
+      shell: nu {0}
+    - uses: stefanzweifel/git-auto-commit-action@v7
+      with:
+          commit_message: "[Auto] Update Hash & Version"
+    - uses: DeterminateSystems/determinate-nix-action@v3
+    - run: nix build
